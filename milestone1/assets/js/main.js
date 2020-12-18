@@ -218,7 +218,7 @@ const app = new Vue({
         searchString: "",
 
         // ultimo accesso
-        lastAccess: "",
+        lastAccessTemp: "",
     },
 
     // methods
@@ -239,19 +239,29 @@ const app = new Vue({
         },
         printReply() {
             const now = dayjs().format('DD/MM/YYYY HH:mm:ss');
-            this.lastAccess = dayjs().format('mm:ss'); // non sono convinto che sia da fare così - il problema è che è uguale per tutti
             const autoReply = {
                 date: now,
                 text: 'prova',
                 status: 'received'
             }
             this.contactShown.messages.push(autoReply);
+            this.lastAccessTemp = dayjs().format('HH:mm:ss'); // non sono convinto che sia da fare così - il problema è che è uguale per tutti
+            this.addLastAccess(this.lastAccessTemp);
         },
         match(contact) {
             const string = this.searchString.charAt(0).toUpperCase() + this.searchString.slice(1);
             if (contact.name.includes(string) || contact.name.includes(this.searchString)) { //non funziona con i caratteri in mezzo alla parola
                 return true;
             }
+        },
+        addLastAccess(last_access) {
+            this.contacts.forEach(contact => {
+                if (this.contactShown.name === contact.name) {
+                    contact.lastAccess = last_access;
+                    console.log(contact);
+                    return contact.lastAccess
+                }
+            });
         }
     }
 });
