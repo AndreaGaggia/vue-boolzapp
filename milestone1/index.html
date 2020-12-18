@@ -35,23 +35,25 @@
         </div>
 
         <div class="aside search-line">
-            <input id="contacts" type="text" placeholder="Cerca o inizia una nuova chat">
+            <input id="contacts" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchString">
         </div>
 
-        <ul class="aside contacts">
-            <li v-for="contact in contacts" @click="showContact(contact)">
-                <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'" alt="">
-                <h2>{{ contact.name }}</h2>
-            </li>
-        </ul>
+        <div class="aside contacts">
+            <ul class="contacts-list">
+                <li v-for="contact in contacts" @click="showContact(contact)" v-if="match(contact)">
+                    <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'" alt="">
+                    <h2>{{ contact.name }}</h2>
+                </li>
+            </ul>
+        </div>
 
         <!-- main -->
         <div class="main top-bar">
             <div class="user-active">
-                <img :src="'./assets/img/avatar' + contactShown.avatar + '.jpg'" alt=""> <!--qui ci va l'utente attivo sul quale clicco-->
+                <img :src="'./assets/img/avatar' + contactShown.avatar + '.jpg'" alt="">
                 <div class="user-active-info">
                     <h2>{{ contactShown.name }}</h2>
-                    <p class="last-access">Ultimo accesso oggi alle</p>
+                    <p class="last-access">Ultimo accesso oggi alle <span>{{ lastAccess }}</span></p>
                 </div>
             </div>
             <div class="icon-set">
@@ -76,7 +78,7 @@
         </div>
         <div class="main typing-line">
             <i class="far fa-smile"></i>
-            <input type="text" id="typing" placeholder="Scrivi un messaggio" v-model="userMsg.text" @keyup.enter="printUserMsg">
+            <input type="text" id="typing" placeholder="Scrivi un messaggio" v-model="userMsg" @keyup.enter="printUserMsg">
             <i class="fas fa-microphone"></i>
         </div>
 

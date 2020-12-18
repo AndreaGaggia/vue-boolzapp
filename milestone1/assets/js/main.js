@@ -6,6 +6,7 @@ Visualizzazione dinamica della lista contatti:​ tramite la direttiva v-for, vi
 
 const app = new Vue({
     el: '#app',
+
     // data
     data: {
         contacts: [
@@ -120,7 +121,7 @@ const app = new Vue({
                 ]
             },
             {
-                name: 'Luisa',
+                name: 'Stefania',
                 avatar: "_6",
                 visible: true,
                 messages: [
@@ -186,6 +187,8 @@ const app = new Vue({
                 ]
             },
         ],
+
+        // contatto mostrato di default che in seguito cambia dinamicamente
         contactShown: {
             name: 'Michele',
             avatar: "_1",
@@ -208,28 +211,48 @@ const app = new Vue({
                 }
             ]
         },
-        userMsg: {
-            date: '10/01/2020 16:15:22',
-            text: '',
-            status: 'sent'
-        },
-        autoReply: {
-            date: '10/01/2020 16:15:22',
-            text: 'prova',
-            status: 'received'
-        }
+        // prorietà che cattura l'input di scirttura del messaggio
+        userMsg: null,
+
+        // input da linea di ricerca
+        searchString: "",
+
+        // ultimo accesso
+        lastAccess: "",
     },
+
     // methods
     methods: {
         showContact(contact_clicked) {
             this.contactShown = contact_clicked;
         },
         printUserMsg() {
-            this.contactShown.messages.push(this.userMsg);
-            setTimeout(this.printReply, 1000)
+            const now = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            const newMsg = {
+                date: now,
+                text: this.userMsg,
+                status: 'sent'
+            }
+            this.contactShown.messages.push(newMsg);
+            this.userMsg = null;
+            setTimeout(this.printReply, 1000);
         },
         printReply() {
-            this.contactShown.messages.push(this.autoReply);
+            const now = dayjs().format('DD/MM/YYYY HH:mm:ss');
+            this.lastAccess = dayjs().format('mm:ss'); // non sono convinto che sia da fare così - il problema è che è uguale per tutti
+            const autoReply = {
+                date: now,
+                text: 'prova',
+                status: 'received'
+            }
+            this.contactShown.messages.push(autoReply);
+        },
+        match(contact) {
+            const string = this.searchString.charAt(0).toUpperCase() + this.searchString.slice(1);
+            if (contact.name.includes(string) || contact.name.includes(this.searchString)) { //non funziona con i caratteri in mezzo alla parola
+                return true;
+            }
         }
     }
 });
+
