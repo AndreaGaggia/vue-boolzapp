@@ -7,7 +7,7 @@
 
 body {
     height: 100vh;
-    background-color: indianred;
+    background-color: indigo;
     display: grid;
     place-items: center;
     font-family: Helvetica, sans-serif;
@@ -131,7 +131,7 @@ h2, h3 {
     border: none;
     border: 1px solid #eaeaea;
     border-radius: 4px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 /* contacts */
@@ -147,6 +147,10 @@ li {
     height: 110px;
     display: flex;
     padding: 10px 20px;
+    cursor: pointer;
+}
+.contacts li:hover {
+    background-color: #fafafa;
 }
 .contacts li:not(:last-child) {
     border-bottom: 1px solid #eaeaea;
@@ -155,4 +159,88 @@ li {
     height: 100%;
     border-radius: 50%;
     margin-right: 20px;
+}
+
+
+
+
+/* main */
+
+/* main top  bar */
+
+.user-active {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.user-active p {
+    margin-top: 4px;
+    color: #757575;
+}
+
+
+/* main messages */
+.main.messages {
+    background-image: url('../img/mine.jpg');
+}
+
+
+/* main typing line */
+.main.typing-line {
+    background-color: #F4EEE9;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.typing-line i {
+    font-size: 2rem;
+    color: #757575;
+}
+
+.typing-line input {
+    flex: 1;
+    margin: 0 25px;
+    height: 100%;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+}
+
+
+.user-conversation {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.user-conversation li {
+    width: max-content;
+    padding: 15px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+p.message-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+span.message-date {
+    font-size: 0.8rem;
+    min-width: 150px;
+    text-align: right;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: #DDF8C6;
+}
+
+.received {
+    align-self: flex-start;
+    background-color: #fff;
 }

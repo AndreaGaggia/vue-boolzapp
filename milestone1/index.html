@@ -39,7 +39,7 @@
         </div>
 
         <ul class="aside contacts">
-            <li v-for="contact in contacts">
+            <li v-for="contact in contacts" @click="showContact(contact)">
                 <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'" alt="">
                 <h2>{{ contact.name }}</h2>
             </li>
@@ -47,13 +47,37 @@
 
         <!-- main -->
         <div class="main top-bar">
-            nome contatto con ultimo accesso
+            <div class="user-active">
+                <img :src="'./assets/img/avatar' + contactShown.avatar + '.jpg'" alt=""> <!--qui ci va l'utente attivo sul quale clicco-->
+                <div class="user-active-info">
+                    <h2>{{ contactShown.name }}</h2>
+                    <p class="last-access">Ultimo accesso oggi alle</p>
+                </div>
+            </div>
+            <div class="icon-set">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-paperclip"></i>
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
         </div>
         <div class="main messages">
-            messaggi con sfondo wa
+            <ul class="user-conversation">
+                <li v-for="message in contactShown.messages" :class="message.status === 'sent' ? 'sent' : 'received'">
+
+                    <p class="message-text">
+                        {{ message.text }}
+                    </p>
+                    <span class="message-date">
+                        {{ message.date }}
+                    </span>
+
+                </li>
+            </ul>
         </div>
         <div class="main typing-line">
-            input per scrivere messaggio
+            <i class="far fa-smile"></i>
+            <input type="text" id="typing" placeholder="Scrivi un messaggio">
+            <i class="fas fa-microphone"></i>
         </div>
 
     </div>

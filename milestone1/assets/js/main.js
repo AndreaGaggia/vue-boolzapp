@@ -6,6 +6,7 @@ Visualizzazione dinamica della lista contatti:​ tramite la direttiva v-for, vi
 
 const app = new Vue({
     el: '#app',
+    // data
     data: {
         contacts: [
             {
@@ -37,17 +38,17 @@ const app = new Vue({
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
-                        text: 'Hai portato a spasso il cane?',
+                        text: 'Oh Paoletto, stasera calcetto?',
                         status: 'sent'
                     },
                     {
                         date: '10/01/2020 15:50:00',
-                        text: 'Ricordati di dargli da mangiare',
+                        text: 'Dai che ce ne manca solo uno...',
                         status: 'sent'
                     },
                     {
                         date: '10/01/2020 16:15:22',
-                        text: 'Tutto fatto!',
+                        text: '⚽⚽⚽',
                         status: 'received'
                     }
                 ]
@@ -185,5 +186,33 @@ const app = new Vue({
                 ]
             },
         ],
+        contactShown: {
+            name: 'Michele',
+            avatar: "_1",
+            visible: true,
+            messages: [
+                {
+                    date: '10/01/2020 15:30:55',
+                    text: 'Hai portato a spasso il cane?',
+                    status: 'sent'
+                },
+                {
+                    date: '10/01/2020 15:50:00',
+                    text: 'Ricordati di dargli da mangiare',
+                    status: 'sent'
+                },
+                {
+                    date: '10/01/2020 16:15:22',
+                    text: 'Tutto fatto!',
+                    status: 'received'
+                }
+            ]
+        }
+    },
+    // methods
+    methods: {
+        showContact(contact_clicked) {
+            this.contactShown = contact_clicked;
+        },
     }
 });
