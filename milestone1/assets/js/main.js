@@ -207,6 +207,16 @@ const app = new Vue({
                     status: 'received'
                 }
             ]
+        },
+        userMsg: {
+            date: '10/01/2020 16:15:22',
+            text: '',
+            status: 'sent'
+        },
+        autoReply: {
+            date: '10/01/2020 16:15:22',
+            text: 'prova',
+            status: 'received'
         }
     },
     // methods
@@ -214,5 +224,12 @@ const app = new Vue({
         showContact(contact_clicked) {
             this.contactShown = contact_clicked;
         },
+        printUserMsg() {
+            this.contactShown.messages.push(this.userMsg);
+            setTimeout(this.printReply, 1000)
+        },
+        printReply() {
+            this.contactShown.messages.push(this.autoReply);
+        }
     }
 });
