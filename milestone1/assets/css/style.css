@@ -1,0 +1,158 @@
+/* debug */
+/* div {
+    border: 1px solid #000;
+} */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    height: 100vh;
+    background-color: indianred;
+    display: grid;
+    place-items: center;
+    font-family: Helvetica, sans-serif;
+}
+
+#app {
+    width: 85%;
+    height: 800px;
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    grid-template-rows: 100px 110px 75px 1fr 100px;
+    background-color: white;
+}
+
+a {
+    color: inherit;
+}
+h2, h3 {
+    font-weight: normal;
+}
+
+.top-bar {
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.icon-set {
+    font-size: 2rem;
+    color: #b1b1b1;
+}
+.icon-set i {
+    margin-right: 15px;
+}
+
+
+/* aside */
+.aside {
+    grid-column: 1 / 2;
+}
+
+.aside.top-bar {
+    grid-row: 1 / 2;
+}
+
+.notification-banner {
+    grid-row: 2 / 3;
+}
+
+.search-line {
+    grid-row: 3 / 4;
+}
+
+.contacts {
+    grid-row: 4 / 6;
+}
+
+/* main */
+.main {
+    grid-column: 2 / 3;
+}
+
+.main.top-bar {
+    grid-row: 1 / 2;
+}
+
+.messages {
+    grid-row: 2 / 5;
+}
+
+.typing-line {
+    grid-row: 5 / 6;
+}
+
+
+/* aside .top-bar */
+.top-bar img {
+    height: 80%;
+    border-radius: 50%;
+}
+
+.app-user {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* aside notification b */
+.notification-banner {
+    background-color: #76DCFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bell-icon {
+    font-size: 2rem;
+    color: #76DCFF;
+    background-color: white;
+    padding: 12px;
+    border-radius: 50%;
+}
+.notification-text {
+    padding-left: 8px;
+}
+.notification-text h3 {
+    margin-top: 5px;
+    color: #757575;
+}
+
+/* aside search line */
+.search-line {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+}
+.search-line input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    font-size: 1.4rem;
+}
+
+/* contacts */
+li {
+    list-style: none;
+}
+
+.aside.contacts {
+    overflow-y: auto;
+}
+
+.contacts li {
+    height: 110px;
+    display: flex;
+    padding: 10px 20px;
+}
+.contacts li:not(:last-child) {
+    border-bottom: 1px solid #eaeaea;
+}
+.contacts img {
+    height: 100%;
+    border-radius: 50%;
+    margin-right: 20px;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOLZAPP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!-- contenitore monitorato da Vue -->
+    <div id="app">
+
+        <!-- aside -->
+        <div class="aside top-bar">
+            <div class="app-user">
+                <img src="./assets/img/avatar_io.jpg" alt="">
+                <h2>Me, the user</h2>
+            </div>
+            <div class="icon-set">
+                <i class="fas fa-circle-notch"></i>
+                <i class="fas fa-comment-alt"></i>
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+        </div>
+
+        <div class="aside notification-banner">
+            <div class="bell-icon">
+                <i class="fas fa-bell-slash"></i>
+            </div>
+            <div class="notification-text">
+                <h2>Ricevi notifiche di nuovi messaggi</h2>
+                <h3><a href="">Attiva notifiche desktop</a></h3>
+            </div>
+        </div>
+
+        <div class="aside search-line">
+            <input id="contacts" type="text" placeholder="Cerca o inizia una nuova chat">
+        </div>
+
+        <ul class="aside contacts">
+            <li v-for="contact in contacts">
+                <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'" alt="">
+                <h2>{{ contact.name }}</h2>
+            </li>
+        </ul>
+
+        <!-- main -->
+        <div class="main top-bar">
+            nome contatto con ultimo accesso
+        </div>
+        <div class="main messages">
+            messaggi con sfondo wa
+        </div>
+        <div class="main typing-line">
+            input per scrivere messaggio
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- myScript -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
