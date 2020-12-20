@@ -1,8 +1,3 @@
-/*
-MILESTONE 1
-Replica della grafica ​con la possibilità di avere messaggi scritti dall’utente (verdi) e dall’interlocutore (bianco) assegnando due classi CSS diverse
-Visualizzazione dinamica della lista contatti:​ tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto
-*/
 
 const app = new Vue({
     el: '#app',
@@ -189,35 +184,15 @@ const app = new Vue({
         ],
 
         // contatto mostrato di default che in seguito cambia dinamicamente
-        contactShown: {
-            name: 'Michele',
-            avatar: "_1",
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    text: 'Hai portato a spasso il cane?',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    text: 'Ricordati di dargli da mangiare',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 16:15:22',
-                    text: 'Tutto fatto!',
-                    status: 'received'
-                }
-            ]
-        },
-        // prorietà che cattura l'input di scirttura del messaggio
+        contactShown: null,
+
+        // prorietà che cattura il value dell'input di scrittura del messaggio
         userMsg: null,
 
         // input da linea di ricerca
         searchString: "",
 
-        // ultimo accesso
+        // ultimo accesso - var temporanea
         lastAccessTemp: "",
     },
 
@@ -225,6 +200,7 @@ const app = new Vue({
     methods: {
         showContact(contact_clicked) {
             this.contactShown = contact_clicked;
+            this.searchString = "";
         },
         printUserMsg() {
             const now = dayjs().format('DD/MM/YYYY HH:mm:ss');
@@ -241,16 +217,16 @@ const app = new Vue({
             const now = dayjs().format('DD/MM/YYYY HH:mm:ss');
             const autoReply = {
                 date: now,
-                text: 'prova',
+                text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius sequi saepe est, blanditiis maxime itaque accusamus unde, ut minus voluptate perferendis dolore tenetur, libero voluptatem molestias facere rem animi adipisci!',
                 status: 'received'
             }
             this.contactShown.messages.push(autoReply);
-            this.lastAccessTemp = dayjs().format('HH:mm:ss'); // non sono convinto che sia da fare così - il problema è che è uguale per tutti
+            this.lastAccessTemp = dayjs().format('HH:mm:ss');
             this.addLastAccess(this.lastAccessTemp);
         },
         match(contact) {
             const string = this.searchString.charAt(0).toUpperCase() + this.searchString.slice(1);
-            if (contact.name.includes(string) || contact.name.includes(this.searchString)) { //non funziona con i caratteri in mezzo alla parola
+            if (contact.name.includes(string) || contact.name.includes(this.searchString)) {
                 return true;
             }
         },
@@ -258,11 +234,28 @@ const app = new Vue({
             this.contacts.forEach(contact => {
                 if (this.contactShown.name === contact.name) {
                     contact.lastAccess = last_access;
-                    console.log(contact);
                     return contact.lastAccess
                 }
             });
+        },
+        //menu contestuale milestone5
+        openMenu(this_message_index) {
+            const openIcons = document.querySelectorAll('.open-menu');
+            const contextMenu = openIcons[this_message_index].nextElementSibling;
+            contextMenu.style.display === 'none' ? contextMenu.style.display = 'block' : contextMenu.style.display = 'none';
+        },
+        //cancella msg
+        deleteMsg(index) {
+            this.contactShown.messages.splice(index, 1);
+            this.openMenu(index);
         }
+    },
+
+    created() {
+        this.contactShown = this.contacts[Math.floor(Math.random() * this.contacts.length)]; //ogni volta che si carica la pagina il contatto di default viene preso casualemnte
     }
 });
+
+
+
 

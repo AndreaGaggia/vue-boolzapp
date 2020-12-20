@@ -1,25 +1,18 @@
-/* debug */
-/* div {
-    border: 1px solid #000;
-} */
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     height: 100vh;
-    background-color: indigo;
+    width: 100vw;
     display: grid;
     place-items: center;
     font-family: Helvetica, sans-serif;
+    background-color: tomato;
 }
 
 #app {
     width: 85%;
-    max-height: 800px;
-    display: grid;
-    grid-template-columns: 500px 1fr;
-    grid-template-rows: 100px 110px 75px 1fr 100px;
-    background-color: white;
+    height: 95%;
+    display: flex;
 }
 
 a {
@@ -45,46 +38,64 @@ h2, h3 {
 }
 
 
+
+
+aside {
+    width: 500px;
+    /* min-height: 0; */
+    border-right: 1px solid #d1cfcf;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    min-width: 450px;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 490px;
+    overflow-x: hidden;
+}
+
 /* aside */
-.aside {
-    grid-column: 1 / 2;
+.top-bar {
+    height: 100px;
 }
-
-.aside.top-bar {
-    grid-row: 1 / 2;
-}
-
 .notification-banner {
-    grid-row: 2 / 3;
+    height: 110px;
 }
-
 .search-line {
-    grid-row: 3 / 4;
+    height: 75px;
 }
-
 .contacts {
-    grid-row: 4 / 6;
+    flex: 1;
+    flex-basis: 0;
+    /* max-height: 100%; */
+    overflow: auto;
+    color: #fff;
 }
 
 /* main */
-.main {
-    grid-column: 2 / 3;
-}
-
 .main.top-bar {
-    grid-row: 1 / 2;
+    height: 100px;
 }
 
 .messages {
-    grid-row: 2 / 5;
+    flex: 1;
+    flex-basis: 0;
+    overflow: auto;
 }
 
 .typing-line {
-    grid-row: 5 / 6;
+    height: 100px;
 }
 
 
-/* aside .top-bar */
+/* ....................... */
+
+
 .top-bar img {
     height: 80%;
     border-radius: 50%;
@@ -124,6 +135,7 @@ h2, h3 {
     display: flex;
     align-items: center;
     background-color: #fafafa;
+    position: relative;
 }
 .search-line input {
     flex: 1;
@@ -132,6 +144,7 @@ h2, h3 {
     border: 1px solid #eaeaea;
     border-radius: 4px;
     font-size: 1.2rem;
+    padding-left: 50px;
 }
 
 /* contacts */
@@ -178,16 +191,19 @@ ul.contacts-list {
     margin-top: 4px;
     color: #757575;
 }
+.user-active img {
+    margin-right: 15px;
+}
 
 
 /* main messages */
-.main.messages {
+.messages {
     background-image: url('../img/mine.jpg');
 }
 
 
 /* main typing line */
-.main.typing-line {
+.typing-line {
     background-color: #F4EEE9;
     padding: 20px;
     display: flex;
@@ -206,9 +222,10 @@ ul.contacts-list {
     border: none;
     border-radius: 6px;
     font-size: 1.2rem;
+    padding: 10px;
 }
 
-
+/* main user conversation */
 .user-conversation {
     height: 100%;
     overflow-y: auto;
@@ -219,6 +236,7 @@ ul.contacts-list {
 
 .user-conversation li {
     width: max-content;
+    max-width: 450px;
     padding: 15px;
     padding-bottom: 5px;
     padding-right: 10px;
@@ -226,6 +244,7 @@ ul.contacts-list {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+    position: relative;
 }
 p.message-text {
     font-size: 1.2rem;
@@ -235,6 +254,7 @@ span.message-date {
     font-size: 0.8rem;
     min-width: 150px;
     text-align: right;
+    color: #757575;
 }
 
 .sent {
@@ -245,4 +265,47 @@ span.message-date {
 .received {
     align-self: flex-start;
     background-color: #fff;
+}
+
+
+
+
+
+
+.icon-wrapper {
+    position: absolute;
+    left: 5%;
+    font-size: 1.4rem;
+    color: #b1b1b1;
+}
+
+
+
+.context-menu {
+    position: absolute;
+    right: 10px;
+    top: 28px;
+    background-color: #fafafa;
+    border-radius: .5rem;
+    z-index: 2;
+}
+.context-menu li {
+    color: #757575;
+}
+.context-menu li:hover {
+    color: #000;
+    cursor: pointer;
+}
+
+
+.open-menu {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+.user-conversation li:hover .open-menu {
+    display: block;
 }
