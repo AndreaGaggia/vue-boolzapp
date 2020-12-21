@@ -43,7 +43,12 @@
                 <ul class="contacts-list">
                     <li v-for="contact in contacts" @click="showContact(contact)" v-if="match(contact)">
                         <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'" alt="">
-                        <h2 style="color: black;">{{ contact.name }}</h2>
+                        <div class="contact-info">
+                            <h2>{{ contact.name }}</h2>
+                            <!-- visualizzazione ultimo messaggio nella lista contatti -->
+                            <p class="last-message-text">{{ contact.messages[contact.messages.length - 1].text }}</p>
+                            <span class="last-message-date">{{ contact.messages[contact.messages.length - 1].date }}</span>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -74,8 +79,8 @@
                         <span class="message-date">
                             {{ message.date }}
                         </span>
-                        <span class="open-menu">
-                            <i class="fas fa-chevron-down" @click="openMenu(index)"></i>
+                        <span class="open-menu" @click="openMenu(index)">
+                            <i class="fas fa-chevron-down"></i>
                         </span>
     
                         <!-- cotext-menu -->
@@ -110,4 +115,3 @@
 
 </body>
 </html>
-

@@ -74,7 +74,7 @@ main {
     flex-basis: 0;
     /* max-height: 100%; */
     overflow: auto;
-    color: #fff;
+    color: #000;
 }
 
 /* main */
@@ -162,6 +162,7 @@ ul.contacts-list {
     display: flex;
     padding: 10px 20px;
     cursor: pointer;
+    position: relative;
 }
 .contacts li:hover {
     background-color: #fafafa;
@@ -308,4 +309,29 @@ span.message-date {
 
 .user-conversation li:hover .open-menu {
     display: block;
+}
+
+
+/* last message */
+
+.contact-info {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+.last-message-text {
+    color: #757575;
+    font-style: italic;
+    overflow: hidden;
+    max-height: 1.3rem;
+    max-width: 400px;
+}
+
+.last-message-date {
+    color: #757575;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 0.8rem;
 }
