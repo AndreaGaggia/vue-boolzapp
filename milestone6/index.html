@@ -64,9 +64,17 @@
                     </div>
                 </div>
                 <div class="icon-set">
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search" @click="showSearch"></i>
                     <i class="fas fa-paperclip"></i>
                     <i class="fas fa-ellipsis-v"></i>
+                    <div class="search-in-messages" v-if="searchInMessages">
+                        <input type="text" placeholder="Cerca in tutti i messaggi" v-model="inSearch">
+                        <ul>
+                            <li v-for="contact in contacts" @click="showContactFromSearch(contact)">
+                                <p v-for="message in contact.messages" v-if="matchText(message)">{{ message.text }}</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="messages">
