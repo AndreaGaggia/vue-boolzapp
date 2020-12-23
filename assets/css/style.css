@@ -6,7 +6,12 @@ body {
     display: grid;
     place-items: center;
     font-family: Helvetica, sans-serif;
-    background-color: tomato;
+    background-image: linear-gradient(
+        to bottom,
+        #009988,
+        #009988 121.5px,
+        #D6DBD7 121.5px
+    );
 }
 
 #app {

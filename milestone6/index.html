@@ -105,7 +105,16 @@
             <div class="typing-line">
                 <i class="far fa-smile"></i>
                 <input type="text" id="typing" placeholder="Scrivi un messaggio" v-model="userMsg" @keyup.enter="printUserMsg">
-                <i class="fas fa-microphone"></i>    
+                <i id="mic" class="fas fa-microphone" @click="toggleRecBox"></i>
+                <!-- recording section -->
+                <div class="recording-box" v-if="recordingBox">
+                    <h3>Click Play to record an audio message</h3>
+                    <div class="buttons">
+                        <button id="rec" @click="recording"><i class="fas fa-record-vinyl"></i></button>
+                        <button id="stop"><i class="fas fa-stop"></i></button>
+                        <button id="annulla" @click="toggleRecBox"><i class="far fa-window-close"></i></button>
+                    </div>
+                </div>    
             </div>
         </main>
     </div>

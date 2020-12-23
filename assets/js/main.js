@@ -1,4 +1,5 @@
 const app = new Vue({
+    // element watched by Vue
     el: '#app',
 
     // data
@@ -123,18 +124,10 @@ const app = new Vue({
         }
     },
 
+    // l-c hooks
     created() {
         this.contactShown = this.contacts[Math.floor(Math.random() * this.contacts.length)]; //ogni volta che si carica la pagina il contatto di default viene preso casualemnte
-    },
-
-    // mounted() {
-    //     if (condition) {
-            
-    //     }
-    //     window.addEventListener('click', (e) => {
-    //         console.log(e.target);
-    //     });
-    // }
+    }
 });
 
 

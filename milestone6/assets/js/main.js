@@ -72,7 +72,8 @@ const app = new Vue({
 
         findings: [],
 
-        notHidden: true
+        // audio recording
+        recordingBox: false
 
     },
 
@@ -139,102 +140,20 @@ const app = new Vue({
                     return true;
                 }
             }
-            
         },
         showContactFromSearch(contact_clicked) {
-            console.log(contact_clicked);
             this.contactShown = contact_clicked;
             this.searchInMessages = !this.searchInMessages;
             this.inSearch = "";
+        },
+        toggleRecBox() {
+            this.recordingBox = !this.recordingBox;
         }
-
     },
 
     created() {
         this.contactShown = this.contacts[Math.floor(Math.random() * this.contacts.length)]; //ogni volta che si carica la pagina il contatto di default viene preso casualemnte
-    },
+    }
 });
 
 
-
-
-// if (this.inSearch !== "") {
-//     const searchString = this.inSearch;
-//     const searchStringNotSensitive = searchString.charAt(0).toUpperCase() + searchString.slice(1);
-//     const finding = {name: "", text: []};
-
-//     finding.name = contact.name;
-//     contact.messages.forEach(message => {
-//         if (message.text.includes(searchString) || message.text.includes(searchStringNotSensitive)) {
-//             finding.text.push(message.text);
-//             this.findings.push(finding);
-//         }
-//     });
-//     // if (finding.text.length > 0) {
-//     //     return true;
-//     // }
-// };
-
-
-
-
-// if (this.inSearch !== "") {
-//     const searchString = this.inSearch;
-//     const searchStringNotSensitive = searchString.charAt(0).toUpperCase() + searchString.slice(1);
-
-//     this.contacts.forEach(contact => {
-//         const finding = {name: "", text: []};
-//         finding.name = contact.name;
-//         contact.messages.forEach(message => {
-//             if (message.text.includes(searchString) || message.text.includes(searchStringNotSensitive)) {
-//                 finding.text.push(message.text);
-//                 this.findings.push(finding);
-//             }
-//         });
-//     });
-// }
-// if (this.inSearch === "") {
-//     this.findings = [];
-// }
-// const searchString = this.inSearch;
-// const searchStringNotSensitive = searchString.charAt(0).toUpperCase() + searchString.slice(1);
-
-// this.contacts.forEach(contact => {
-//     const finding = {name: "", text: []};
-//     finding.name = contact.name;
-//     contact.messages.forEach(message => {
-//         if (message.text.includes(searchString) || message.text.includes(searchStringNotSensitive)) {
-//             finding.text.push(message.text);
-//             this.findings.push(finding);
-//         }
-//     });
-// });
-
-
-
-
-
-
-
-
-
-// // voglio tutti i messaggi
-// const allMessages = this.contacts.map((contact) => {
-//     const allTexts = contact.messages.map((message) => {
-//         return message.text;
-//     });
-//     return allTexts;
-// });
-// console.log(allMessages);
-
-// // riempio il dato matches con le corrispondenze
-// const notSensitive = this.inSearch.charAt(0).toUpperCase() + this.inSearch.slice(1);
-// allMessages.forEach(element => {
-//     element.forEach(text => {
-//         if (text.includes(this.inSearch) || text.includes(notSensitive)) {
-//             this.matches.push(text);
-//             this.matchFound = true;
-//         }
-//     });
-// });
-// console.log(this.matches);

@@ -6,7 +6,12 @@ body {
     display: grid;
     place-items: center;
     font-family: Helvetica, sans-serif;
-    background-color: tomato;
+    background-image: linear-gradient(
+        to bottom,
+        #009988,
+        #009988 121.5px,
+        #D6DBD7 121.5px
+    );
 }
 
 #app {
@@ -90,6 +95,7 @@ main {
 
 .typing-line {
     height: 100px;
+    position: relative;
 }
 
 
@@ -387,4 +393,36 @@ span.message-date {
 .search-in-messages p:hover {
     cursor: pointer;
     background-color: rgba(255, 197, 71, 0.664);
+}
+
+
+
+
+
+/* audio recording */
+
+#mic:hover {
+    color: #000;
+    cursor: pointer;
+}
+
+.recording-box {
+    position: absolute;
+    right: 30px;
+    bottom: 80%;
+    background-color: aqua;
+    padding: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.buttons button {
+    margin-right: 10px;
+}
+.buttons button i {
+    font-size: 1.5rem;
+    padding: 10px;
 }
